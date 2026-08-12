@@ -123,6 +123,32 @@
     color: #fff;
     font-variant-numeric: tabular-nums;
   }
+  .donate-section {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 14px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .donate-section p {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .donate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffc439;
+    color: #111;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: 24px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .donate-btn:hover { opacity: 0.85; }
 </style>
 </head>
 <body>
@@ -151,6 +177,13 @@
     <p>he couldn't handle the heat and ran away.</p>
     <button class="btn" id="restartBtn">try again</button>
   </div>
+</div>
+
+<div class="donate-section">
+  <p>Enjoyed the game? Support future ones 💛</p>
+  <a class="donate-btn" href="https://www.paypal.com/donate/?business=hcmtech.official@gmail.com&currency_code=USD" target="_blank" rel="noopener">
+    🍜 Donate via PayPal
+  </a>
 </div>
 
 <script>
