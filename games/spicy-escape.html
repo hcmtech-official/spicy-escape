@@ -171,6 +171,46 @@
     font-size: 11px;
     margin-top: 6px;
   }
+  .crypto-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .crypto-box img { border-radius: 8px; width: 120px; height: 120px; }
+  .crypto-addr-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 5px 10px;
+    max-width: 260px;
+  }
+  .crypto-addr {
+    font-family: monospace;
+    font-size: 11px;
+    color: #ccc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .copy-btn {
+    background: #333;
+    border: none;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover { background: #444; }
 </style>
 </head>
 <body>
@@ -207,8 +247,14 @@
     🍜 Donate via PayPal
   </a>
   <div class="crypto-section">
-    <div class="crypto-btn">₿ Crypto donations — coming soon</div>
-    <p class="crypto-note">Wallet addresses being added shortly</p>
+    <div class="crypto-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm" alt="BTC donation QR code">
+      <div class="crypto-addr-row">
+        <span class="crypto-addr" id="btcAddr">3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm</span>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm');this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)">copy</button>
+      </div>
+      <p class="crypto-note">₿ Bitcoin (BTC network only)</p>
+    </div>
   </div>
 </div>
 
