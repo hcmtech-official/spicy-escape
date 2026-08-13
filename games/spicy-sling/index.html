@@ -110,32 +110,30 @@
     transition: opacity 0.2s ease;
   }
   .donate-btn:hover { opacity: 0.85; }
-  .crypto-section {
-    margin-top: 10px;
-    padding-top: 10px;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .crypto-btn {
+  .crypto-toggle-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: #2a2a2a;
-    color: #ccc;
+    color: #fff;
     font-weight: 600;
-    font-size: 13px;
-    padding: 8px 18px;
+    font-size: 14px;
+    padding: 10px 22px;
     border-radius: 24px;
     border: 1px solid #444;
-    cursor: default;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s ease, background 0.2s ease;
   }
-  .crypto-note {
-    color: #666;
-    font-size: 11px;
-    margin-top: 6px;
+  .crypto-toggle-btn:hover { background: #333; }
+  .crypto-panel {
+    display: none;
+    margin-top: 12px;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
+  .crypto-panel.open { display: flex; }
   .crypto-box {
     display: inline-flex;
     flex-direction: column;
@@ -145,8 +143,14 @@
     border: 1px solid #333;
     border-radius: 14px;
     padding: 12px 16px;
+    width: 148px;
   }
-  .crypto-box img { border-radius: 8px; width: 120px; height: 120px; }
+  .crypto-box-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .crypto-box img { border-radius: 8px; width: 110px; height: 110px; }
   .crypto-addr-row {
     display: flex;
     align-items: center;
@@ -154,12 +158,12 @@
     background: #111;
     border: 1px solid #333;
     border-radius: 8px;
-    padding: 5px 10px;
-    max-width: 260px;
+    padding: 5px 8px;
+    max-width: 130px;
   }
   .crypto-addr {
     font-family: monospace;
-    font-size: 11px;
+    font-size: 10px;
     color: #ccc;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -176,6 +180,11 @@
     flex-shrink: 0;
   }
   .copy-btn:hover { background: #444; }
+  .crypto-note {
+    color: #888;
+    font-size: 10.5px;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
@@ -218,30 +227,38 @@
   <a class="donate-btn" href="https://www.paypal.com/donate/?business=hcmtech.official@gmail.com&currency_code=AUD" target="_blank" rel="noopener">
     🍜 Donate via PayPal
   </a>
-  <div class="crypto-section">
+  <div class="crypto-toggle-wrap" style="margin-top:10px;">
+    <button class="crypto-toggle-btn" id="cryptoToggleBtn" onclick="document.getElementById('cryptoPanel').classList.toggle('open')">
+      ₿ Ξ ₮ &nbsp;Donate Crypto
+    </button>
+  </div>
+  <div class="crypto-panel" id="cryptoPanel">
     <div class="crypto-box">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm" alt="BTC donation QR code">
+      <div class="crypto-box-label">Bitcoin (BTC)</div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm" alt="BTC donation QR code">
       <div class="crypto-addr-row">
         <span class="crypto-addr" id="btcAddr">3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm</span>
-        <button class="copy-btn" onclick="navigator.clipboard.writeText('3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm');this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)">copy</button>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm');this.textContent='✓';setTimeout(()=>this.textContent='copy',1500)">copy</button>
       </div>
-      <p class="crypto-note">₿ Bitcoin (BTC network only)</p>
+      <p class="crypto-note">BTC network only</p>
     </div>
     <div class="crypto-box">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363" alt="ETC donation QR code">
+      <div class="crypto-box-label">Ethereum Classic (ETC)</div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363" alt="ETC donation QR code">
       <div class="crypto-addr-row">
         <span class="crypto-addr" id="etcAddr">0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363</span>
-        <button class="copy-btn" onclick="navigator.clipboard.writeText('0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363');this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)">copy</button>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363');this.textContent='✓';setTimeout(()=>this.textContent='copy',1500)">copy</button>
       </div>
-      <p class="crypto-note">Ⓔ Ethereum Classic (ETC network only)</p>
+      <p class="crypto-note">ETC network only</p>
     </div>
     <div class="crypto-box">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0xe743bF6A3752c2CF766f10327e89959Dd7D04B43" alt="USDT donation QR code">
+      <div class="crypto-box-label">USDT</div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=0xe743bF6A3752c2CF766f10327e89959Dd7D04B43" alt="USDT donation QR code">
       <div class="crypto-addr-row">
         <span class="crypto-addr" id="usdtAddr">0xe743bF6A3752c2CF766f10327e89959Dd7D04B43</span>
-        <button class="copy-btn" onclick="navigator.clipboard.writeText('0xe743bF6A3752c2CF766f10327e89959Dd7D04B43');this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)">copy</button>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('0xe743bF6A3752c2CF766f10327e89959Dd7D04B43');this.textContent='✓';setTimeout(()=>this.textContent='copy',1500)">copy</button>
       </div>
-      <p class="crypto-note">₮ USDT (Ethereum network only)</p>
+      <p class="crypto-note">Ethereum network only</p>
     </div>
   </div>
 </div>
