@@ -113,6 +113,10 @@
   .crypto-section {
     margin-top: 10px;
     padding-top: 10px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .crypto-btn {
     display: inline-flex;
@@ -222,6 +226,14 @@
         <button class="copy-btn" onclick="navigator.clipboard.writeText('3QzFq4r3ddk8AXcuxoexcksGUU8PdwBgDm');this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)">copy</button>
       </div>
       <p class="crypto-note">₿ Bitcoin (BTC network only)</p>
+    </div>
+    <div class="crypto-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363" alt="ETC donation QR code">
+      <div class="crypto-addr-row">
+        <span class="crypto-addr" id="etcAddr">0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363</span>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('0x65F7d9Bf62357bBBfD07ACc66Fc792A998565363');this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)">copy</button>
+      </div>
+      <p class="crypto-note">Ⓔ Ethereum Classic (ETC network only)</p>
     </div>
   </div>
 </div>
